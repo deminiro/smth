@@ -1,0 +1,54 @@
+.profile-container {
+  padding: 25px;
+}
+
+.profile-info-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  padding-bottom: 40px;
+}
+
+.page-info__name { 
+  font-size: 130%;
+}
+
+.page-info__city, .page-info__birth {
+  padding-top: 30px
+}
+
+.page-info__city>span, .page-info__birth>span {
+  padding-left: 10px
+}
+
+.page-info-news__new-post {
+  width: 42%;
+}
+
+.page-info-news__button {
+  margin-top: 5px;
+}
+
+.page-info-news__posts {
+  padding-top: 40px
+}
+
+.page-info-news__textarea {
+  width: 100%;
+  height: 40px;
+  padding-top: 5px;
+  padding-left: 10px;
+  font-size: 110%;
+}
+
+.page-info-news__list {
+  padding: 0;
+}
+
+.page-info-news-list__element {
+  padding-bottom: 25px
+}
+
+.page-info-news__name {
+  color: purple;
+  font-size: 125%;
+}

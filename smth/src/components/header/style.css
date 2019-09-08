@@ -4,7 +4,7 @@ body, p {
 
 .header {
   background-color: lightblue; 
-  padding: 30px;
+  padding: 14px;
   display: grid;
   align-content: center;
   justify-content: center;

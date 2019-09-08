@@ -1,0 +1,12 @@
+body, p {
+    margin: 0;
+}
+
+.header {
+  background-color: lightblue; 
+  padding: 30px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: 50% 50%
+}

@@ -6,13 +6,13 @@ import './style.module.css';
 const Navbar = () => (
   <ul>
     <li>
-      <NavLink exact to="/myprofile">My page</NavLink>
+      <NavLink exact to="/store">Store</NavLink>
     </li>
     <li>
-      <NavLink exact to="/myfriends">My friends</NavLink>
+      <NavLink exact to="/favorite">Favorite</NavLink>
     </li>
     <li>
-      <NavLink exact to="/mymessages">My messages</NavLink>
+      <NavLink exact to="/sales">Sales</NavLink>
     </li>
   </ul>
 );

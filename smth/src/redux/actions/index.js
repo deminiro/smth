@@ -1,7 +1,13 @@
-export const takeDataMyProfile = () => ({
-  type: 'DATA_MY_PROFILE',
+export const takeDataArmchairs = () => ({
+  type: 'DATA_ARMCHAIRS',
 });
 
-export const addNewPost = () => ({
-  type: 'ADD_NEW_POST',
+export const makeFavoriteThing = (imgSrc) => ({
+  type: 'MAKE_FAVORITE_THING',
+  imgSrc,
+});
+
+export const nonSubmitedNewText = (text) => ({
+  type: 'NON_SUBMITED_NEW_TEXT',
+  text,
 });

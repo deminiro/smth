@@ -3,23 +3,35 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 
+import { takeDataArmchairs, makeFavoriteThing } from '../../redux/actions';
 import Navbar from './navbar/navbar';
-import Messages from './pages/messages';
-import Profile from './pages/profile';
-import Friends from './pages/friends';
+import Sales from './pages/sales';
+import Store from './pages/store';
+import Favorite from './pages/favorite';
 import './style.css';
 
 const Main = ({ store }) => {
   const dispatch = useDispatch();
+  dispatch(takeDataArmchairs());
 
   return (
     <div className="main">
       <BrowserRouter>
         <Navbar />
         <div className="result-of-navbar">
-          <Route path="/myprofile" component={() => <Profile dispatch={dispatch} store={store} />} />
-          <Route path="/mymessages" component={Messages} />
-          <Route path="/myfriends" component={Friends} />
+          <Route
+            path="/store"
+            component={() => (
+              <Store
+                dispatch={dispatch}
+                takeDataArmchairs={takeDataArmchairs}
+                makeFavoriteThing={makeFavoriteThing}
+                store={store}
+              />
+            )}
+          />
+          <Route path="/favorite" component={Favorite} />
+          <Route path="/sales" component={Sales} />
         </div>
       </BrowserRouter>
     </div>

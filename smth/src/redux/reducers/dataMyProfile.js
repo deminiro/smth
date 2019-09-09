@@ -1,21 +1,50 @@
-const data = {
-  img: 'https://upload.wikimedia.org/wikipedia/ru/thumb/a/a7/Red_Donatello.jpg/250px-Red_Donatello.jpg',
-  nameOfProfile: 'Donatello Sun',
-  city: 'New York',
-  dateOfBirth: 1987,
-  posts: [
-    { id: 1, message: 'Wow!' },
-    { id: 2, message: 'My page is work!' },
-    { id: 3, message: 'New mech is comming' },
-  ],
-};
+/* eslint-disable no-param-reassign */
+const data = [
+  {
+    img: 'https://ikeacity.by/UserFiles/products/images2/normal/903/832/21/legkoe-kreslo-ikea-ikea-ps-2012-0.jpg',
+    nameOfThing: 'Лёгкое кресло',
+    price: '224.7p',
+    favorite: false,
+  },
+  {
+    img: 'https://ikeacity.by/UserFiles/products/images2/normal/303/777/46/kreslo-ikea-gessberg-0.jpg',
+    nameOfThing: 'ГЕССБЕРГ Кресло',
+    price: '974.7p',
+    favorite: true,
+  },
+  {
+    img: 'https://ikeacity.by/UserFiles/products/images2/normal/203/531/90/kreslo-ikea-fikshult-0.jpg',
+    nameOfThing: 'ФИКСХУЛЬТ Кресло',
+    price: '529p',
+    favorite: false,
+  },
+  {
+    img: 'https://ikeacity.by/UserFiles/products/images2/normal/192/271/69/legkoe-kreslo-ikea-leyf-arne-0.jpg',
+    nameOfThing: 'ЛЕЙФ-АРНЕ - лёгкое кресло',
+    price: '155.6p',
+    favorite: false,
+  },
+  {
+    img: 'https://ikeacity.by/UserFiles/products/images2/normal/592/271/72/legkoe-kreslo-ikea-sven-bertil-0.jpg',
+    nameOfThing: 'СВЕН-БЕРТИЛЬ - Легкое кресло',
+    price: '195.4p',
+    favorite: false,
+  },
+];
 
-const dataMyProfile = (state = '', action) => {
+function makeFavoriteThing(imgSrc) {
+  data.forEach((el) => {
+    if (el.img === imgSrc) el.favorite = !el.favorite;
+  });
+  return data;
+}
+
+const dataMyProfile = (state = [], action) => {
   switch (action.type) {
-    case 'DATA_MY_PROFILE':
+    case 'DATA_ARMCHAIRS':
       return data;
-    case 'ADD_NEW_POST':
-      return data.posts.push(action);
+    case 'MAKE_FAVORITE_THING':
+      return makeFavoriteThing(action.imgSrc);
     default:
       return state;
   }

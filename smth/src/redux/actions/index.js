@@ -1,5 +1,7 @@
-const dataMyProfile = () => ({
+export const takeDataMyProfile = () => ({
   type: 'DATA_MY_PROFILE',
 });
 
-export default dataMyProfile;
+export const addNewPost = () => ({
+  type: 'ADD_NEW_POST',
+});

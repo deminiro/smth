@@ -2,10 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import './profileCss.css';
-import takeData from '../../../redux/actions';
+import { takeDataMyProfile } from '../../../redux/actions';
 
 const Profile = ({ store, dispatch }) => {
-  dispatch(takeData());
+  dispatch(takeDataMyProfile());
   const { dataMyProfile } = store.getState();
   const {
     img, nameOfProfile, city, dateOfBirth, posts,

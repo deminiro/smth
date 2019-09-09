@@ -14,6 +14,8 @@ const dataMyProfile = (state = '', action) => {
   switch (action.type) {
     case 'DATA_MY_PROFILE':
       return data;
+    case 'ADD_NEW_POST':
+      return data.posts.push(action);
     default:
       return state;
   }

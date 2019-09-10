@@ -3,7 +3,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { takeDataArmchairs, makeFavoriteThing, favoriteThingsFunc } from '../../redux/actions';
+import {
+  takeDataArmchairs, makeFavoriteThing, favoriteThingsFunc, changeAmountOfBuys,
+  returnPurchaseItems,
+} from '../../redux/actions';
 import Navbar from './navbar/navbar';
 import Purchases from './pages/purchases';
 import Market from './pages/market';
@@ -24,6 +27,7 @@ const Main = ({ store }) => {
               dispatch(takeDataArmchairs());
               return (
                 <Market
+                  changeAmountOfBuys={changeAmountOfBuys}
                   dispatch={dispatch}
                   takeDataArmchairs={takeDataArmchairs}
                   makeFavoriteThing={makeFavoriteThing}
@@ -38,6 +42,7 @@ const Main = ({ store }) => {
               dispatch(favoriteThingsFunc());
               return (
                 <Favorite
+                  changeAmountOfBuys={changeAmountOfBuys}
                   dispatch={dispatch}
                   store={store}
                   favoriteThingsFunc={favoriteThingsFunc}
@@ -46,7 +51,19 @@ const Main = ({ store }) => {
               );
             }}
           />
-          <Route path="/purchases" component={Purchases} />
+          <Route
+            path="/purchases"
+            component={() => {
+              dispatch(returnPurchaseItems());
+              return (
+                <Purchases
+                  store={store}
+                  dispatch={dispatch}
+                  changeAmountOfBuys={changeAmountOfBuys}
+                />
+              );
+            }}
+          />
         </div>
       </BrowserRouter>
     </div>

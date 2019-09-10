@@ -28,20 +28,23 @@ const Favorite = ({
     <div className="profile-container">
       <ul className="list">
         {favoriteThings.map(({
-          img, nameOfThing, price, favorite,
+          img, nameOfThing, price, favorite, amountForBuy,
         }) => (
           <li className="list-element" key={img + price}>
             <img src={img} width="250" height="250" className="list-element__image" alt="armchair" />
             <div className="list-element__container-info">
               <div>
                 <p className="list-element__name">{nameOfThing}</p>
-                <p className="list-element__price">{price}</p>
+                <p className="list-element__price">{`${price}p`}</p>
               </div>
-              <FontAwesomeIcon
-                onClick={() => onClickOnIcon(img, favorite)}
-                icon={solidStar}
-                className="list-element__star"
-              />
+              <div>
+                <FontAwesomeIcon
+                  onClick={() => onClickOnIcon(img, favorite)}
+                  icon={solidStar}
+                  className="list-element__star"
+                />
+                <p className="list-element__amount-of-buy">{amountForBuy}</p>
+              </div>
             </div>
           </li>
         ))}

@@ -89,8 +89,32 @@ function changeAmountOfBuys(imgSrc, symbol, dataObj) {
   return dataObj;
 }
 
-function returnPurchaseItems(dataObj) {
-  return dataObj.filter((el) => el.amountForBuy > 0);
+function returnPurchaseItems(dataObj, imgSrcWithCountZero = '') {
+  const newData = dataObj.filter((el) => el.amountForBuy > 0 || el.img === imgSrcWithCountZero);
+  let sumOfThings = 0;
+  newData.forEach((el) => {
+    sumOfThings += el.price * el.amountForBuy;
+  });
+  return {
+    dataObj: newData,
+    sumOfThings: sumOfThings.toFixed(2),
+  };
+}
+
+function deleteBuys(dataObj, imgSrc) {
+  const newObj = [];
+  let sumOfThings = 0;
+  dataObj.forEach((el) => {
+    if (el.img === imgSrc) el.amountForBuy = 0;
+    else if (el.amountForBuy > 0) {
+      newObj.push(el);
+      sumOfThings += el.price * el.amountForBuy;
+    }
+  });
+  return {
+    dataObj: newObj,
+    sumOfThings: sumOfThings.toFixed(2),
+  };
 }
 
 const dataMyProfile = (state = [], action) => {
@@ -104,7 +128,9 @@ const dataMyProfile = (state = [], action) => {
     case 'CHANGE_AMOUNT_OF_BUYS':
       return changeAmountOfBuys(action.imgSrc, action.symbol, data);
     case 'RETURN_PURCHASE_ITEMS':
-      return returnPurchaseItems(data);
+      return returnPurchaseItems(data, action.imgSrcWithCountZero);
+    case 'DELETE_BUYS':
+      return deleteBuys(data, action.imgSrc);
     default:
       return state;
   }

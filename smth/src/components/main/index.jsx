@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 
 import {
   takeDataArmchairs, makeFavoriteThing, favoriteThingsFunc, changeAmountOfBuys,
-  returnPurchaseItems,
+  returnPurchaseItems, deleteBuys,
 } from '../../redux/actions';
 import Navbar from './navbar/navbar';
 import Purchases from './pages/purchases';
@@ -60,6 +60,8 @@ const Main = ({ store }) => {
                   store={store}
                   dispatch={dispatch}
                   changeAmountOfBuys={changeAmountOfBuys}
+                  returnPurchaseItems={returnPurchaseItems}
+                  deleteBuys={deleteBuys}
                 />
               );
             }}

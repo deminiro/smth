@@ -17,8 +17,14 @@ export const changeAmountOfBuys = (imgSrc, symbol) => ({
   symbol,
 });
 
-export const returnPurchaseItems = () => ({
+export const returnPurchaseItems = (imgSrcWithCountZero) => ({
   type: 'RETURN_PURCHASE_ITEMS',
+  imgSrcWithCountZero,
+});
+
+export const deleteBuys = (imgSrc) => ({
+  type: 'DELETE_BUYS',
+  imgSrc,
 });
 
 export const nonSubmitedNewText = (text) => ({

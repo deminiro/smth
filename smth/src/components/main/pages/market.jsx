@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import solidStar from './solidStarImport';
 
+import FavoriteIcon from './componentsForPages/favoriteIcon';
 import './profileCss.css';
 
 const Market = ({

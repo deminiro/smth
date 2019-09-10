@@ -18,14 +18,14 @@ const data = [
     img: 'https://ikeacity.by/UserFiles/products/images2/normal/203/531/90/kreslo-ikea-fikshult-0.jpg',
     nameOfThing: 'ФИКСХУЛЬТ - Кресло',
     price: 529,
-    favorite: false,
+    favorite: true,
     amountForBuy: 0,
   },
   {
     img: 'https://ikeacity.by/UserFiles/products/images2/normal/192/271/69/legkoe-kreslo-ikea-leyf-arne-0.jpg',
     nameOfThing: 'ЛЕЙФ-АРНЕ - Лёгкое кресло',
     price: 155.60,
-    favorite: false,
+    favorite: true,
     amountForBuy: 0,
   },
   {

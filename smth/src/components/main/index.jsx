@@ -32,6 +32,7 @@ const Main = ({ store }) => {
                   takeDataArmchairs={takeDataArmchairs}
                   makeFavoriteThing={makeFavoriteThing}
                   store={store}
+                  favoriteThingsFunc={favoriteThingsFunc}
                 />
               );
             }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,16 +7,19 @@ import solidStar from './solidStarImport';
 
 import './profileCss.css';
 
-const Market = ({
-  store, dispatch, makeFavoriteThing, takeDataArmchairs,
-}) => {
+const Market = ({ store, dispatch, makeFavoriteThing }) => {
   const [dataMyProfile, setDataMyProfile] = useState(useSelector((state) => state.dataMyProfile));
+  const [thing, setThing] = useState({ src: '', favorite: null });
 
-  function onClickOnIcon(img) {
+  function onClickOnIcon(img = '', favorite) {
     dispatch(makeFavoriteThing(img));
+    setThing({ src: img, favorite });
+  }
+
+  useEffect(() => {
     const newData = store.getState();
     setDataMyProfile(newData.dataMyProfile);
-  }
+  }, [thing.src, thing.favorite]);
 
   return (
     <div className="profile-container">
@@ -32,7 +35,7 @@ const Market = ({
                 <p className="list-element__price">{price}</p>
               </div>
               <FontAwesomeIcon
-                onClick={() => onClickOnIcon(img)}
+                onClick={() => onClickOnIcon(img, favorite)}
                 icon={favorite ? solidStar : faStar}
                 className="list-element__star"
               />
@@ -47,15 +50,17 @@ const Market = ({
 export default Market;
 
 Market.propTypes = {
-  store: propTypes.object,
+  store: propTypes.shape({
+    getState: propTypes.func,
+  }),
   dispatch: propTypes.func,
   makeFavoriteThing: propTypes.func,
-  takeDataArmchairs: propTypes.func,
 };
 
 Market.defaultProps = {
-  store: {},
+  store: propTypes.shape({
+    getState: () => {},
+  }),
   dispatch: () => {},
   makeFavoriteThing: () => {},
-  takeDataArmchairs: () => {},
 };

@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 import { takeDataArmchairs, makeFavoriteThing } from '../../redux/actions';
 import Navbar from './navbar/navbar';
 import Sales from './pages/sales';
-import Store from './pages/store';
+import Market from './pages/market';
 import Favorite from './pages/favorite';
 import './style.css';
 
@@ -22,7 +22,7 @@ const Main = ({ store }) => {
           <Route
             path="/store"
             component={() => (
-              <Store
+              <Market
                 dispatch={dispatch}
                 takeDataArmchairs={takeDataArmchairs}
                 makeFavoriteThing={makeFavoriteThing}
@@ -41,9 +41,13 @@ const Main = ({ store }) => {
 export default Main;
 
 Main.propTypes = {
-  store: propTypes.object,
+  store: propTypes.shape({
+    getState: propTypes.func,
+  }),
 };
 
 Main.defaultProps = {
-  store: {},
+  store: propTypes.shape({
+    getState: () => {},
+  }),
 };

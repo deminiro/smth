@@ -47,6 +47,7 @@ const Market = ({ store, dispatch, makeFavoriteThing }) => {
   );
 };
 
+
 export default Market;
 
 Market.propTypes = {

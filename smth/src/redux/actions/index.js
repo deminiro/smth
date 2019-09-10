@@ -7,6 +7,10 @@ export const makeFavoriteThing = (imgSrc) => ({
   imgSrc,
 });
 
+export const favoriteThingsFunc = () => ({
+  type: 'FAVORITE_THINGS',
+});
+
 export const nonSubmitedNewText = (text) => ({
   type: 'NON_SUBMITED_NEW_TEXT',
   text,

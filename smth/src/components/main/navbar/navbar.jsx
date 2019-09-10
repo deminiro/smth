@@ -12,7 +12,7 @@ const Navbar = () => (
       <NavLink exact to="/favorite">Favorite</NavLink>
     </li>
     <li>
-      <NavLink exact to="/sales">Sales</NavLink>
+      <NavLink exact to="/purchases">Purchases</NavLink>
     </li>
   </ul>
 );

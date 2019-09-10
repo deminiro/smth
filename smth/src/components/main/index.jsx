@@ -3,16 +3,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { takeDataArmchairs, makeFavoriteThing } from '../../redux/actions';
+import { takeDataArmchairs, makeFavoriteThing, favoriteThingsFunc } from '../../redux/actions';
 import Navbar from './navbar/navbar';
-import Sales from './pages/sales';
+import Purchases from './pages/purchases';
 import Market from './pages/market';
 import Favorite from './pages/favorite';
 import './style.css';
 
 const Main = ({ store }) => {
   const dispatch = useDispatch();
-  dispatch(takeDataArmchairs());
 
   return (
     <div className="main">
@@ -21,17 +20,33 @@ const Main = ({ store }) => {
         <div className="result-of-navbar">
           <Route
             path="/store"
-            component={() => (
-              <Market
-                dispatch={dispatch}
-                takeDataArmchairs={takeDataArmchairs}
-                makeFavoriteThing={makeFavoriteThing}
-                store={store}
-              />
-            )}
+            component={() => {
+              dispatch(takeDataArmchairs());
+              return (
+                <Market
+                  dispatch={dispatch}
+                  takeDataArmchairs={takeDataArmchairs}
+                  makeFavoriteThing={makeFavoriteThing}
+                  store={store}
+                />
+              );
+            }}
           />
-          <Route path="/favorite" component={Favorite} />
-          <Route path="/sales" component={Sales} />
+          <Route
+            path="/favorite"
+            component={() => {
+              dispatch(favoriteThingsFunc());
+              return (
+                <Favorite
+                  dispatch={dispatch}
+                  store={store}
+                  favoriteThingsFunc={favoriteThingsFunc}
+                  makeFavoriteThingFunc={makeFavoriteThing}
+                />
+              );
+            }}
+          />
+          <Route path="/purchases" component={Purchases} />
         </div>
       </BrowserRouter>
     </div>
